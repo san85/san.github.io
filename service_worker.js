@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
     console.log(event);
   var requestUrl = new URL(event.request.url);
     console.log(requestUrl.pathname);
-    if (requestUrl.pathname === 'sample') {
+    if (requestUrl.pathname === '/sample') {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
     var responseBody = {
