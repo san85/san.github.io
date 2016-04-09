@@ -32,9 +32,10 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('fetch', function(event) {
     
     console.log('Handling fetch event for', event.request.url);
-    consoloe.log(event);
-  /*var requestUrl = new URL(event.request.url);
-    if (requestUrl.pathname === 'demo6857325.mockable.io') {
+    console.log(event);
+  var requestUrl = new URL(event.request.url);
+    console.log(requestUrl.pathname);
+    if (requestUrl.pathname === 'sample') {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
     var responseBody = {
@@ -57,7 +58,7 @@ self.addEventListener('fetch', function(event) {
 
     console.log(' Responding with a mock response body:', responseBody);
     event.respondWith(mockResponse);
-  }*/
+  }
     
   event.respondWith(
     caches.open('waglite_cache').then(function(cache) {
