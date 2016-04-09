@@ -20,11 +20,40 @@
     <meta name="msapplication-TileImage" content="img/img-256.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
 <body>
    Body Text
     <div>Div Test</div>
+    <div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>get Response</p>
+
+<h1>{{getresponse}}</h1>
+
+        <p>post Response</p>
+        <h1>{{postresponse}}</h1>
+</div>
+
+    <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("https://demo6857325.mockable.io/sample")
+  .then(function(response) {
+      $scope.getresponse = response.data;
+  });
+    
+     var data = {};
+    
+    
+    $http.post("https://demo6857325.mockable.io/sample",data)
+  .then(function(response) {
+      $scope.postresponse = response.data;
+  });
+    
+});
+</script>
     
     <script type="text/javascript">
     // sensor=false Polyfill for navigator.standalone to detect if web app is being launched from the home screen
