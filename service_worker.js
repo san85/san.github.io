@@ -45,6 +45,35 @@ self.addEventListener('fetch', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+    
+    console.log('Handling fetch event for', event.request.url);
+    consoloe.log(event);
+  var requestUrl = new URL(event.request.url);
+    if (requestUrl.pathname === 'demo6857325.mockable.io')) {
+    // This matches the result format documented at
+    // https://developers.google.com/url-shortener/v1/getting_started#shorten
+    var responseBody = {
+	"msg":"mock hello world"
+};
+
+    var responseInit = {
+      // status/statusText default to 200/OK, but we're explicitly setting them here.
+      status: 200,
+      statusText: 'OK',
+      headers: {
+        'Content-Type': 'application/json',
+        // Purely optional, but we return a custom response header indicating that this is a
+        // mock response. The controlled page could check for this header if it wanted to.
+        'X-Mock-Response': 'yes'
+      }
+    };
+
+    var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
+
+    console.log(' Responding with a mock response body:', responseBody);
+    event.respondWith(mockResponse);
+  }
+    
   event.respondWith(
     caches.open('mysite-dynamic').then(function(cache) {
       return cache.match(event.request).then(function(response) {
