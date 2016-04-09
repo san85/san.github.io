@@ -1,0 +1,36 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "WAG Lite",
+    "short_name": "WAG Lite",
+    "icons": [{
+        "src": "/images/adaptive/share/images/icons/Mobile_Logo_DD_32.png",
+        "sizes": "32x32",
+        "type": "image/png"
+    },{
+        "src": "/images/adaptive/share/images/icons/Mobile_Logo_DD_48.png",
+        "sizes": "48x48",
+        "type": "image/png"
+    },{
+        "src": "/images/adaptive/share/images/icons/Mobile_Logo_DD.png",
+        "sizes": "64x164",
+        "type": "image/png"
+    }],
+    "splash_screens": [{
+        "src": "splash/lowres",
+        "sizes": "320x240"
+    }, {
+        "src": "splash/hd_small",
+        "sizes": "1334x750"
+    }, {
+        "src": "splash/hd_hi",
+        "sizes": "1920x1080",
+        "density": 3
+    }],
+    "scope": "/",
+    "start_url": "/index.html",
+    "background_color": "#FAFAFA",
+    "theme_color": "#512DA8",
+    "display": "standalone",
+    "orientation": "portrait"
+}
