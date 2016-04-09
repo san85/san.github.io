@@ -3,9 +3,7 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('waglite_cache').then(function(cache) {
-      return cache.addAll(['/assets/header/js/header.js',
-        '/s.css'
-        ]);
+      return cache.addAll([]);
     })
   );
   console.log('Installed', event);
@@ -58,9 +56,7 @@ self.addEventListener('fetch', function(event) {
 
     console.log(' Responding with a mock response body:', responseBody);
     event.respondWith(mockResponse);
-  }
-    
-  event.respondWith(
+  }else{event.respondWith(
     caches.open('waglite_cache').then(function(cache) {
       console.log("fetch");
       return cache.match(event.request).then(function (response) {
@@ -68,13 +64,16 @@ self.addEventListener('fetch', function(event) {
           cache.put(event.request, response.clone());
           return response;
         });
-      });
+      }).catch(function() {
+      return caches.match("/fallback.html");
+    });
     })
   );
+      }
 });
 
 
-self.addEventListener('fetch', function(event) {
+/*self.addEventListener('fetch', function(event) {
     
     
     
@@ -89,7 +88,7 @@ self.addEventListener('fetch', function(event) {
       })
     })
   );
-});
+});*/
 
 
 
