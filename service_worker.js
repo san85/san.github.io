@@ -30,21 +30,6 @@ self.addEventListener('activate', function(event) {
 /*Service Worker Fetch Event */
 
 self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.open('waglite_cache').then(function(cache) {
-      console.log("fetch");
-      return cache.match(event.request).then(function (response) {
-        return response || fetch(event.request).then(function(response) {
-          cache.put(event.request, response.clone());
-          return response;
-        });
-      });
-    })
-  );
-});
-
-
-self.addEventListener('fetch', function(event) {
     
     console.log('Handling fetch event for', event.request.url);
     consoloe.log(event);
@@ -75,6 +60,24 @@ self.addEventListener('fetch', function(event) {
   }
     
   event.respondWith(
+    caches.open('waglite_cache').then(function(cache) {
+      console.log("fetch");
+      return cache.match(event.request).then(function (response) {
+        return response || fetch(event.request).then(function(response) {
+          cache.put(event.request, response.clone());
+          return response;
+        });
+      });
+    })
+  );
+});
+
+
+self.addEventListener('fetch', function(event) {
+    
+    /*
+    
+  event.respondWith(
     caches.open('mysite-dynamic').then(function(cache) {
       return cache.match(event.request).then(function(response) {
         var fetchPromise = fetch(event.request).then(function(networkResponse) {
@@ -84,7 +87,7 @@ self.addEventListener('fetch', function(event) {
         return response || fetchPromise;
       })
     })
-  );
+  );*/
 });
 
 
