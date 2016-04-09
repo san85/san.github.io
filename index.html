@@ -41,15 +41,15 @@ var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
   $http.get("https://demo6857325.mockable.io/sample")
   .then(function(response) {
-      $scope.getresponse = response.data;
+      $scope.getresponse = response.data.msg;
   });
     
      var data = {};
     
     
-    $http.post("https://demo6857325.mockable.io/sample",data)
+    $http.post("https://demo6857325.mockable.io/sampledata",data)
   .then(function(response) {
-      $scope.postresponse = response.data;
+      $scope.postresponse = response.data.msg;
   });
     
 });
