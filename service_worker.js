@@ -3,7 +3,7 @@
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('waglite_cache').then(function(cache) {
-      return cache.addAll([]);
+      return cache.addAll(['/']);
     })
   );
   console.log('Installed', event);

@@ -6,19 +6,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8;IE=Edge,chrome=1" />
-  
-    <script src="app.js"></script>
+  <link rel="manifest" href="manifest.json" />
+    
     <!-- PWA code-->
-    <link rel="manifest" href="manifest.json" />
+    
     <meta name="application-name" content="WAG Lite">
-    <link rel="icon" sizes="16x16 32x32 48x48" href="img/img.ico">
-    <link rel="icon" sizes="64x64" href="img/img-64.png">
-    <meta name="mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="WAG Lite">
-    <link rel="apple-touch-icon" href="img/img-256.png">
-    <meta name="msapplication-TileImage" content="img/img-256.png">
+    <link rel="apple-touch-icon" href="/img/img-256.png">
+    <meta name="msapplication-TileImage" content="/img/img-256.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
+    <link rel="icon" sizes="16x16 32x32 48x48" href="img/img.ico">
+    <link rel="icon" sizes="64x64" href="/img/img-64.png">
+   <link rel="icon" sizes="128x128" href="/img/img-128.png">
+    <link rel="icon" sizes="256x256" href="/img/img-256.png">
+    <link rel="icon" sizes="512x512" href="/img/img-256.png">
+    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
@@ -40,9 +44,7 @@
     <script>
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
-    $scope.getresponse="static";
-    $scope.postresponse="hi";
- /* $http.get("https://demo6857325.mockable.io/sample")
+  $http.get("https://demo6857325.mockable.io/sample")
   .then(function(response) {
       $scope.getresponse = response.data.msg;
   });
@@ -53,21 +55,39 @@ app.controller('myCtrl', function($scope, $http) {
     $http.post("https://demo6857325.mockable.io/sampledata",data)
   .then(function(response) {
       $scope.postresponse = response.data.msg;
-  });*/
+  });
     
 });
 </script>
     
     <script type="text/javascript">
+        window.addEventListener('beforeinstallprompt', function(e) {
+  // beforeinstallprompt Event fired
+
+  // e.userChoice will return a Promise.
+  // For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
+  e.userChoice.then(function(choiceResult) {
+
+    console.log(choiceResult.outcome);
+
+    if(choiceResult.outcome == 'dismissed') {
+      console.log('User cancelled home screen install');
+    }
+    else {
+      console.log('User added to home screen');
+    }
+  });
+});
     // sensor=false Polyfill for navigator.standalone to detect if web app is being launched from the home screen
-    if (!window.navigator.standalone && window.location.href.match('display=standalone')) {
+    /*if (!window.navigator.standalone && window.location.href.match('display=standalone')) {
         window.navigator.standalone = true;
     }
 
     if (window.matchMedia('(display-mode: standalone)').matches) {
         console.log("Thank you for installing our app!");
-    }
+    }*/
     </script>
 </body>
+    <script src="app.js"></script>
 
 </html>
