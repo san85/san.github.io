@@ -6,12 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=10;IE=9;IE=8;IE=Edge,chrome=1" />
-  <link rel="manifest" href="manifest.json" />
-    
+    <link rel="manifest" href="manifest.json" />
     <!-- PWA code-->
-    
     <meta name="application-name" content="WAG Lite">
-     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="WAG Lite">
     <link rel="apple-touch-icon" href="/img/img-256.png">
@@ -19,75 +17,69 @@
     <meta name="msapplication-TileColor" content="#2F3BA2">
     <link rel="icon" sizes="16x16 32x32 48x48" href="img/img.ico">
     <link rel="icon" sizes="64x64" href="/img/img-64.png">
-   <link rel="icon" sizes="128x128" href="/img/img-128.png">
+    <link rel="icon" sizes="128x128" href="/img/img-128.png">
     <link rel="icon" sizes="256x256" href="/img/img-256.png">
     <link rel="icon" sizes="512x512" href="/img/img-256.png">
-    
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
 <body>
-   Body Text
+    Body Text
     <div>Div Test</div>
-    <div ng-app="myApp" ng-controller="myCtrl"> 
-
-<p>get Response</p>
-
-<h1>{{getresponse}}</h1>
-
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <p>get Response</p>
+        <h1>{{getresponse}}</h1>
         <p>post Response</p>
         <h1>{{postresponse}}</h1>
-</div>
-<img src="img/img-128.png">
+    </div>
+    <img src="img/img-128.png">
     <img src="splash/screen1.jpeg">
     <script>
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
-  $http.get("https://demo6857325.mockable.io/sample")
-  .then(function(response) {
-      $scope.getresponse = response.data.msg;
-  });
-    
-     var data = {};
-    
-    
-    $http.post("https://demo6857325.mockable.io/sampledata",data)
-  .then(function(response) {
-      $scope.postresponse = response.data.msg;
-  });
-    
-});
-</script>
-    
-    <script type="text/javascript">
-        window.addEventListener('beforeinstallprompt', function(e) {
-  // beforeinstallprompt Event fired
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+        $http.get("https://demo6857325.mockable.io/sample")
+            .then(function(response) {
+                $scope.getresponse = response.data.msg;
+            });
 
-  // e.userChoice will return a Promise.
-  // For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
-  e.userChoice.then(function(choiceResult) {
+        var data = {};
 
-    console.log(choiceResult.outcome);
 
-    if(choiceResult.outcome == 'dismissed') {
-      console.log('User cancelled home screen install');
-    }
-    else {
-      console.log('User added to home screen');
-    }
-  });
-});
-    // sensor=false Polyfill for navigator.standalone to detect if web app is being launched from the home screen
-    /*if (!window.navigator.standalone && window.location.href.match('display=standalone')) {
-        window.navigator.standalone = true;
-    }
+        $http.post("https://demo6857325.mockable.io/sampledata", data)
+            .then(function(response) {
+                $scope.postresponse = response.data.msg;
+            });
 
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        console.log("Thank you for installing our app!");
-    }*/
+    });
     </script>
 </body>
-    <script src="app.js"></script>
+<script src="app.js"></script>
+<script type="text/javascript">
+window.addEventListener('beforeinstallprompt', function(e) {
+    // beforeinstallprompt Event fired
+
+    // e.userChoice will return a Promise.
+    // For more details read: http://www.html5rocks.com/en/tutorials/es6/promises/
+    e.userChoice.then(function(choiceResult) {
+
+        console.log(choiceResult.outcome);
+
+        if (choiceResult.outcome == 'dismissed') {
+            console.log('User cancelled home screen install');
+        } else {
+            console.log('User added to home screen');
+        }
+    });
+});
+// sensor=false Polyfill for navigator.standalone to detect if web app is being launched from the home screen
+/*if (!window.navigator.standalone && window.location.href.match('display=standalone')) {
+    window.navigator.standalone = true;
+}
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+    console.log("Thank you for installing our app!");
+}*/
+</script>
 
 </html>

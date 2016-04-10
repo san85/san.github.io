@@ -4,40 +4,49 @@
     "name": "WAG Lite",
     "short_name": "WAG Lite",
     "icons": [{
-        "src": "/img/img-32.png",
+        "src": "img/img-32.png",
         "sizes": "32x32",
         "type": "image/png"
-    },{
-        "src": "/img/img-48.png",
+    }, {
+        "src": "img/img-48.png",
         "sizes": "48x48",
         "type": "image/png"
-    },{
-        "src": "/img/img-64.png",
+    }, {
+        "src": "img/img-64.png",
         "sizes": "64x64",
         "type": "image/png"
-    },{
-        "src": "/img/img-128.png",
+    }, {
+        "src": "img/img-128.png",
         "sizes": "128x128",
         "type": "image/png"
-    },{
-        "src": "/img/img-256.png",
+    }, {
+        "src": "img/img-128.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }, {
+        "src": "img/img-256.png",
         "sizes": "256x256",
         "type": "image/png"
-    },{
-        "src": "/img/img-256.png",
+    }, {
+        "src": "img/img-256.png",
         "sizes": "512x512",
         "type": "image/png"
     }],
     "splash_screens": [{
-        "src": "splash/32",
+        "src": "splash/32/screen.jpeg",
         "sizes": "320x240"
     }, {
-        "src": "splash/64",
+        "src": "splash/64/screen1.jpeg",
         "sizes": "1334x750"
     }, {
-        "src": "splash",
+        "src": "splash/screen1.jpeg",
         "sizes": "1920x1080",
         "density": 3
+    }],
+    "prefer_related_applications": true,
+    "related_applications": [{
+        "platform": "play",
+        "id": "com.google.samples.apps.iosched"
     }],
     "scope": "/",
     "start_url": "/index.html",
