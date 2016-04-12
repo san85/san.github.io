@@ -15,4 +15,8 @@ if ('serviceWorker' in navigator) {
   }).catch(function(error) {
     console.log('Service Worker Error :', error);
   });
+    
+    window.addEventListener('beforeinstallprompt', function(e) {
+        outputElement.textContent = 'beforeinstallprompt Event fired';
+      });
 }
