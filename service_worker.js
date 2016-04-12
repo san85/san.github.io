@@ -34,29 +34,41 @@ self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);
     console.log(requestUrl.pathname);
     if (event.request.method==='GET' && requestUrl.pathname === '/sample') {
-        // This matches the result format documented at
-        // https://developers.google.com/url-shortener/v1/getting_started#shorten
         var responseBody = {
             "msg": "mock hello world"
         };
 
         var responseInit = {
-            // status/statusText default to 200/OK, but we're explicitly setting them here.
             status: 200,
             statusText: 'OK',
             headers: {
                 'Content-Type': 'application/json',
-                // Purely optional, but we return a custom response header indicating that this is a
-                // mock response. The controlled page could check for this header if it wanted to.
                 'X-Mock-Response': 'yes'
             }
         };
 
         var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
-
         console.log(' Responding with a mock response body:', responseBody);
         event.respondWith(mockResponse);
-    } else {
+    }else if (event.request.method==='POST') {
+        var responseBody = {
+            "msg": "mock post hello world"
+        };
+
+        var responseInit = {
+            status: 200,
+            statusText: 'OK',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Mock-Response': 'yes'
+            }
+        };
+
+        var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
+        console.log(' Responding with a mock response body:', responseBody);
+        event.respondWith(mockResponse);
+    }
+    else {
         event.respondWith(
             caches.open('waglite_cache').then(function(cache) {
                 console.log("fetch");

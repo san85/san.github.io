@@ -37,7 +37,7 @@
         "sizes": "320x240"
     }, {
         "src": "splash/64/screen1.jpeg",
-        "sizes": "1334x750"
+        "sizes": "128x128"
     }, {
         "src": "splash/screen1.jpeg",
         "sizes": "1920x1080",
