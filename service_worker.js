@@ -34,8 +34,10 @@ self.addEventListener('fetch', function(event) {
     var requestUrl = new URL(event.request.url);
     console.log(requestUrl.pathname);
     if (event.request.method==='GET' && requestUrl.pathname === '/sample') {
+        
+        
         var responseBody = {
-            "msg": "mock hello world"
+            "msg": "mock get hello world"
         };
 
         var responseInit = {
@@ -49,7 +51,21 @@ self.addEventListener('fetch', function(event) {
 
         var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
         console.log(' Responding with a mock response body:', responseBody);
-        event.respondWith(mockResponse);
+        
+        event.respondWith(
+          
+                    return mockResponse || fetch(event.request).then(function(response) {
+                        
+                        return response;
+                    });
+                
+        );
+        
+        
+        
+        
+        
+        
     }else if (event.request.method==='POST') {
         var responseBody = {
             "msg": "mock post hello world"
@@ -66,7 +82,15 @@ self.addEventListener('fetch', function(event) {
 
         var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
         console.log(' Responding with a mock response body:', responseBody);
-        event.respondWith(mockResponse);
+        
+        event.respondWith(
+          
+                    return mockResponse || fetch(event.request).then(function(response) {
+                        
+                        return response;
+                    });
+                
+        );
     }
     else {
         event.respondWith(
