@@ -1,8 +1,8 @@
 /*Service Worker Install Event */
-
+var cacheversion='waglite_cache';
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('waglite_cache').then(function(cache) {
+        caches.open(cacheversion).then(function(cache) {
             return cache.addAll(['/index.html']);
         })
     );
@@ -135,7 +135,7 @@ self.addEventListener('fetch', function(event) {
 
           caches
             // We open a cache to store the response for this request.
-            .open('waglite_cache')
+            .open(cacheversion)
             .then(function add(cache) {
               /* We store the response for this request. It'll later become
                  available to caches.match(event.request) calls, when looking
