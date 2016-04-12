@@ -51,13 +51,13 @@ self.addEventListener('fetch', function(event) {
 
         var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
         console.log(' Responding with a mock response body:', responseBody);
-        
-        event.respondWith(
-                    var fetchPromise = fetch(event.request).then(function(response) {
+        var fetchPromise = fetch(event.request).then(function(response) {
                         
                         return response;
                     });
-                 return mockResponse || response;
+        event.respondWith(
+                    
+                 return mockResponse || fetchPromise;
         );
         
         
@@ -87,7 +87,7 @@ self.addEventListener('fetch', function(event) {
                         
                         return response;
                     });
-                 return response || mockResponse;
+                 return fetchPromise || mockResponse;
                 
         );
     }
