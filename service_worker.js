@@ -36,11 +36,27 @@ self.addEventListener('fetch', function(event) {
     if (event.request.method==='GET' && requestUrl.pathname === '/sample') {
         
         
-        var responseBody = {
-            "msg": "mock get hello world"
+        
+        event.respondWith(
+      fetch(event.request).then(function(response) {
+        if (!response.ok) {
+          // An HTTP error response code (40x, 50x) won't cause the fetch() promise to reject.
+          // We need to explicitly throw an exception to trigger the catch() clause.
+          throw Error('response status ' + response.status);
+        }
+
+        // If we got back a non-error HTTP response, return it to the page.
+        return response;
+      }).catch(function(error) {
+        console.warn('Constructing a fallback response, ' +
+          'due to an error while fetching the real response:', error);
+
+        // For demo purposes, use a pared-down, static YouTube API response as fallback.
+        var fallbackResponse = {
+           "msg": "mock get hello world"
         };
 
-        var responseInit = {
+           var responseInit = {
             status: 200,
             statusText: 'OK',
             headers: {
@@ -48,17 +64,19 @@ self.addEventListener('fetch', function(event) {
                 'X-Mock-Response': 'yes'
             }
         };
-
-        var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
-        console.log(' Responding with a mock response body:', responseBody);
-        var fetchPromise = fetch(event.request).then(function(response) {
-                        
-                        return response;
-                    });
-        event.respondWith(
-                    
-                 return mockResponse || fetchPromise;
-        );
+          
+        // Construct the fallback response via an in-memory variable. In a real application,
+        // you might use something like `return fetch(FALLBACK_URL)` instead,
+        // to retrieve the fallback response via the network.
+        return new Response(JSON.stringify(fallbackResponse,responseInit), {
+          headers: {'Content-Type': 'application/json'}
+        });
+      })
+    );
+        
+        
+        
+       
         
         
         
@@ -66,11 +84,26 @@ self.addEventListener('fetch', function(event) {
         
         
     }else if (event.request.method==='POST') {
-        var responseBody = {
-            "msg": "mock post hello world"
+         event.respondWith(
+      fetch(event.request).then(function(response) {
+        if (!response.ok) {
+          // An HTTP error response code (40x, 50x) won't cause the fetch() promise to reject.
+          // We need to explicitly throw an exception to trigger the catch() clause.
+          throw Error('response status ' + response.status);
+        }
+
+        // If we got back a non-error HTTP response, return it to the page.
+        return response;
+      }).catch(function(error) {
+        console.warn('Constructing a fallback response, ' +
+          'due to an error while fetching the real response:', error);
+
+        // For demo purposes, use a pared-down, static YouTube API response as fallback.
+        var fallbackResponse = {
+           "msg": "mock post hello world"
         };
 
-        var responseInit = {
+           var responseInit = {
             status: 200,
             statusText: 'OK',
             headers: {
@@ -78,18 +111,15 @@ self.addEventListener('fetch', function(event) {
                 'X-Mock-Response': 'yes'
             }
         };
-
-        var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
-        console.log(' Responding with a mock response body:', responseBody);
-        
-        event.respondWith(          
-                     var fetchPromise = fetch(event.request).then(function(response) {
-                        
-                        return response;
-                    });
-                 return fetchPromise || mockResponse;
-                
-        );
+          
+        // Construct the fallback response via an in-memory variable. In a real application,
+        // you might use something like `return fetch(FALLBACK_URL)` instead,
+        // to retrieve the fallback response via the network.
+        return new Response(JSON.stringify(fallbackResponse,responseInit), {
+          headers: {'Content-Type': 'application/json'}
+        });
+      })
+    );
     }
     else {
         event.respondWith(
