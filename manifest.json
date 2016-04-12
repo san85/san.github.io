@@ -33,16 +33,16 @@
         "type": "image/png"
     }],
     "splash_screens": [{
-        "src": "splash/32/screen.jpeg",
+        "src": "splash/32",
         "sizes": "192x192"
     }, {
-        "src": "splash/64/screen1.jpeg",
+        "src": "splash/64",
         "sizes": "128x128"
     }, {
-        "src": "splash/screen1.jpeg",
+        "src": "splash",
         "sizes": "1920x1080",
         "density": 3
-    }],
+    },"src": "splash/32"],
     /*"prefer_related_applications": true,*/
     "related_applications": [{
         "platform": "play",
