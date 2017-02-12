@@ -14,7 +14,6 @@
     <meta name=apple-mobile-web-app-capable content=yes>
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="WAG Lite">
-    
     <meta name="msapplication-TileImage" content="/img/img-256.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
     <link rel="icon" sizes="16x16 32x32 48x48" href="/img/img.ico">
@@ -24,37 +23,37 @@
     <link rel="icon" sizes="256x256" href="/img/img-256.png">
     <link rel="icon" sizes="512x512" href="/img/img-256.png">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
 <body>
-    Body Text1d
-    <div>Div Test</div>
-    <div ng-app="myApp" ng-controller="myCtrl">
-        <p>get Response</p>
-        <h1>{{getresponse}}</h1>
-        <p>post Response</p>
-        <h1>{{postresponse}}</h1>
+    <div>Hi Welcome to Servie Worker Demo Page</div>
+    <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+         <section film>
+        </section>
+
+         <section> Images for Offline Supprt Testing
+        </section>
+        <img src="/img/img-128.png">
+        <img src="/splash/screen1.jpeg">
     </div>
-    <img src="/img/img-128.png">
-    <img src="/splash/screen1.jpeg">
     <script>
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
-        $http.get("https://demo6857325.mockable.io/sample")
+        $http.get("https://swapi.co/api/films/")
             .then(function(response) {
-                $scope.getresponse = response.data.msg;
+                $scope.starwars = response.data;
             });
 
-        var data = {};
-
-
-        $http.post("https://demo6857325.mockable.io/sampledata", data)
-            .then(function(response) {
-                $scope.postresponse = response.data.msg;
-            });
 
     });
+    app.directive('film', function() {
+    return {
+        restrict: "A",
+        templateUrl: 'widgets/film.html'
+    };
+});
     </script>
 </body>
 <script src="app.js"></script>

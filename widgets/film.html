@@ -1,0 +1,7 @@
+<div ng-repeat="film in starwars.results">
+    <div class="row" ng-class="$odd?'yelloColor':'meterColor'">
+        <div class="col-sm-4">{{film.title}}</div>
+        <div class="col-sm-4">{{film.director}}</div>
+        <div class="col-sm-4">{{film.release_date}}</div>
+    </div>
+</div>
