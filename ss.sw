@@ -2,7 +2,7 @@
 
 self.addEventListener('install', function(event) {
     event.waitUntil(
-        caches.open('waglite_cache').then(function(cache) {
+        caches.open('mmslite_cache').then(function(cache) {
             return cache.addAll(['/index.html']);
         })
     );
@@ -122,7 +122,7 @@ self.addEventListener('fetch', function(event) {
         );
     } else {
         event.respondWith(
-            caches.open('waglite_cache').then(function(cache) {
+            caches.open('mmslite_cache').then(function(cache) {
                 console.log("fetch");
                 return cache.match(event.request).then(function(response) {
                     return response || fetch(event.request).then(function(response) {
@@ -144,7 +144,7 @@ self.addEventListener('push', function(event) {
 
   event.waitUntil(
     self.registration.showNotification(title, {
-      'body': 'New Walgreens Store',
+      'body': 'New MMS Store',
       'icon': 'img/img-256.png'
     }));
 });

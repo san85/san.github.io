@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:wag>
+<html lang="en" xmlns:mms>
 
 <head>
     <title ng-bind="meta.title"></title>
@@ -9,11 +9,11 @@
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="/img/img-256.png">
     <!-- PWA code-->
-    <meta name="application-name" content="WAG Lite">
+    <meta name="application-name" content="MMS Lite">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name=apple-mobile-web-app-capable content=yes>
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="WAG Lite">
+    <meta name="apple-mobile-web-app-title" content="MMS Lite">
     <meta name="msapplication-TileImage" content="/img/img-256.png">
     <meta name="msapplication-TileColor" content="#2F3BA2">
     <link rel="icon" sizes="16x16 32x32 48x48" href="/img/img.ico">
@@ -27,13 +27,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
-<body>
+<body class="container">
+<br/>
+<br/>
     <div>Hi Welcome to Servie Worker Demo Page</div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
-         <section film>
+        <section film>
         </section>
-
-         <section> Images for Offline Supprt Testing
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <section> Images for Offline Supprt Testing
         </section>
         <img src="/img/img-128.png">
         <img src="/splash/screen1.jpeg">
@@ -49,11 +60,11 @@
 
     });
     app.directive('film', function() {
-    return {
-        restrict: "A",
-        templateUrl: 'widgets/film.html'
-    };
-});
+        return {
+            restrict: "A",
+            templateUrl: 'widgets/film.html'
+        };
+    });
     </script>
 </body>
 <script src="app.js"></script>

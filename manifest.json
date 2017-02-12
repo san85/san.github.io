@@ -1,8 +1,8 @@
 {
     "lang": "en",
     "dir": "ltr",
-    "name": "WAG Lite",
-    "short_name": "WAG Lite",
+    "name": "MMS Lite",
+    "short_name": "MMS Lite",
     "icons": [{
         "src": "img/img-32.png",
         "sizes": "32x32",
